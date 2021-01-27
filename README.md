@@ -13,11 +13,11 @@
 8. 點擊 back 按鈕 -> 使用者可回到首頁
 
 ### 首頁
-![](index.png)
+![](./pictures/index.png)
 ### detail頁面
-![](detail.png)
+![](./pictures/detail.png)
 ### edit頁面
-![](edit.png)
+![](./pictures/edit.png)
 
 ## Installing - 專案安裝流程
 1. 開啟終端機，執行以下指令 :

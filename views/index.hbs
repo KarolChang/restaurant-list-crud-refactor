@@ -65,8 +65,8 @@
 
             {{!-- Delete Button --}}
             <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST" style="display:inline">
-              <button type="submit" class="btn btn-danger"
-                style="font-family: 'Balsamiq Sans', cursive;">delete</button>
+              <button type="submit" class="btn btn-danger" style="font-family: 'Balsamiq Sans', cursive;"
+                onclick="return confirmDelete();">delete</button>
             </form>
           </div>
         </div>
@@ -75,3 +75,15 @@
     </div>
   </div>
 </div>
+<script>
+  function confirmDelete() {
+    const result = confirm('確定刪除?')
+    if (result) {
+      alert('已刪除')
+      return true
+    } else {
+      return false
+    }
+  }
+
+</script>

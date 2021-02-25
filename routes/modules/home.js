@@ -15,25 +15,24 @@ router.get('/', (req, res) => {
 // sort function
 const currentSort = { name: '店名(正序)', name_desc: '店名 (反序)', category: '類別 (正序)', category_desc: '類別 (反序)', rating_desc: '評比 (由高到低)', rating: '評比 (由低到高)' }
 router.post('/', (req, res) => {
-  const sort = req.body.sort
+  let sort = req.body.sort
   const sortName = currentSort[sort]
+  let sortWay = 'asc'
   if (sort.includes('_desc')) {
-    const index = sort.indexOf('_')
-    const sortDesc = sort.slice(0, index)
-    Restaurant.find()
-      .lean()
-      .sort({ [sortDesc]: 'desc' })
-      .then(restaurant => res.render('index', { restaurant, sort: sortDesc, sortName }))
-      .catch(error => console.error(error))
-  } else {
-    Restaurant.find()
-      .lean()
-      .sort({ [sort]: 'asc' })
-      .then(restaurant => res.render('index', { restaurant, sort, sortName }))
-      .catch(error => console.error(error))
+    sort = sort.slice(0, sort.indexOf('_'))
+    sortWay = 'desc'
+    sortRestaurant(sort, sortWay, res, sortName)
   }
+  sortRestaurant(sort, sortWay, res, sortName)
 })
 
+// function
+function sortRestaurant(sort, sortWay, res, sortName) {
+  Restaurant.find()
+    .lean()
+    .sort({ [sort]: sortWay })
+    .then(restaurant => res.render('index', { restaurant, sortName }))
+    .catch(error => console.error(error))
+}
+
 module.exports = router
-
-

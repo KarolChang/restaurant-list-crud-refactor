@@ -4,10 +4,9 @@
   <div class="row mb-3" style="margin: 0 auto;padding:20px 150px;background-color:coral;border-radius:8px;">
     {{!-- Create Button --}}
     <div class="row col-3" style="height:40px;">
-      <button type="button" class="btn btn-dark">
-        <a href="./restaurants/create" style="text-decoration:none;color:white; font-weight:bold;">Create
-          Restaurant!</a>
-      </button>
+      <a href="./restaurants/create" class="btn btn-dark"
+        style="text-decoration:none;color:white; font-weight:bold;">Create
+        Restaurant!</a>
     </div>
     {{!-- Search bar --}}
     <div class="row col-6">
@@ -26,8 +25,9 @@
     <div class="row col-3" style="height:35px;">
       <form action="/" method="POST">
         <select name="sort" class="form-control btn-outline-dark" id='inputType' onchange="this.form.submit()"
-          style="cursor: pointer;">
-          <option value='' style="display:none" selected>{{#if sortName}}{{sortName}}{{else}}排列順序{{/if}}</option>
+          style="cursor: pointer;width: 250px;">
+          <option value='' style="display:none" selected>{{#if sortName}}排列順序: {{sortName}}{{else}}排列順序: 店名 (正序){{/if}}
+          </option>
           <option value="name">店名 (正序)</option>
           <option value="name_desc">店名 (反序)</option>
           <option value="category">類別 (正序)</option>
